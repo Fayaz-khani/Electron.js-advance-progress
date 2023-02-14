@@ -7,29 +7,34 @@
 </head>
 
 <body>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="myChart" width="400" height="400">
+        <div id="labels"></div>
+    </canvas>
+
+    <p id="p"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
     <button onclick="downloadcanvas2()">
         Download
     </button>
-
-
     <script>
+
         var mydata = null;
-//         document.write("data is here")
-//         var date = new Date();
-//         function readJSON(path) { 
-//     var xhr = new XMLHttpRequest(); 
-//     xhr.open('GET', "./my_json_file.json", true); 
-//     xhr.responseType = 'blob'; 
-//     xhr.onload = function(e) {  
-//       if (this.status == 200) { 
-//           var file = new File([this.response], 'temp'); 
-//           var fileReader = new FileReader(); 
-//           fileReader.addEventListener('load', function(){ 
-//                //do stuff with fileReader.result 
-//                document.write("data is here")
-//     xhr.send(); 
-// } 
+        //         document.write("data is here")
+        //         var date = new Date();
+        //         function readJSON(path) { 
+        //     var xhr = new XMLHttpRequest(); 
+        //     xhr.open('GET', "./my_json_file.json", true); 
+        //     xhr.responseType = 'blob'; 
+        //     xhr.onload = function(e) {  
+        //       if (this.status == 200) { 
+        //           var file = new File([this.response], 'temp'); 
+        //           var fileReader = new FileReader(); 
+        //           fileReader.addEventListener('load', function(){ 
+        //                //do stuff with fileReader.result 
+        //                document.write("data is here")
+        //     xhr.send(); 
+        // } 
         // var fs = require('fs');
         // var json = require('./my_json_file.json'); //with path
         // import data from './my_json_file.json' assert { type: 'JSON' };
@@ -98,10 +103,45 @@
                 label: "intellectual Health"
             }
         ];
-        var ctx = document.getElementById("myChart").getContext("2d");
-                var myNewChart = new Chart(ctx).PolarArea(data);
+        datasets: [{
+            backgroundColor: [
+                "#2ecc71",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#34495e"
+            ]}]
 
-        function downloadcanvas() {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myNewChart = new Chart(ctx).PolarArea(data);
+            this.data.forEach(item => {
+                var i = 80;
+
+                console.log(i)
+
+                //here I want to increase the size of i (distance from the top)
+                // pdf.text(item.color, 15, i);
+                // pdf.text(item.label, 65, 100);
+                document.getElementById('labels').innerHTML = item.color;
+                // document.write(item.color +"<br>")
+                // document.write(item.label+"<br>")
+                // document.write(item.value+"<br>")
+                var paragraph = document.getElementById("p");
+                var text = document.createTextNode(item.color + item.label + item.value);
+
+                paragraph.appendChild(text);
+                // var paragraph = document.getElementById("p2");
+                // var text = document.createTextNode(item.label );
+
+                // paragraph.appendChild(text);
+                // var paragraph = document.getElementById("p3");
+                // var text = document.createTextNode(item.value );
+
+                // paragraph.appendChild(text);
+            });
+            function downloadcanvas() {
             var imagelink = document.createElement('a');
             var canvas = document.getElementById("myChart");
             imagelink.download = 'Life  Baclance Wheel';
@@ -128,6 +168,23 @@
             pdf.text("Client's Name _________________", 140, 15);
             pdf.text("Preperer's Name _______________", 140, 25);
 
+            //         pdf.fromHTML($('#p').html(), 15, 15, {
+            //     'width': 170,
+            //         'elementHandlers': specialElementHandlers
+            // });
+
+            data.forEach(item => {
+                var i = 80;
+
+                console.log(i)
+
+                //here I want to increase the size of i (distance from the top)
+
+                pdf.text(item.color, 15, i);
+                pdf.text(item.label, 65, 100);
+                i = + 15
+                console.log(i);
+            });
             pdf.setFontSize(25);
             pdf.text("Life Balance Wheel", 65, 50);
             pdf.addImage(canvasImage, 'JPEG', 50, 65);
