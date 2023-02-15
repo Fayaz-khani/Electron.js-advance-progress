@@ -19,14 +19,28 @@
     </div>
 </body>
 <script>
+    //this is the dynamic data of the templete
+    
+    const templateName = "life Balance Wheel";
+    const clientName = "Saeed Sharif";
+    const preperesName = "Zohaib Rahman";
+    const formTitle = "Life Cycle Form";
+    // const prepereBy = "New";
+
     const options = {
         type: 'polarArea',
         data: {
-            labels: ["khan", "fayaz", "Yellow", "Green", "Purple", "physical Health"],
+            //these are the categoreis(1,2,3,4 ....)
+            labels: ["Physical Health", "mental Health", "social Health", "inteligent Health","spiritual","emotional"],
             datasets: [{
-                label: 'life Balance Wheel',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+                // these are the values of labels
+                data: [42, 33, 23, 50,10,20],
+                
+                // these are the colors of categories
+                backgroundColor: ['#654123', '#123654','#E8598B', '#113007', '#111207','#101127']
+
+                //also can be done using colors name
+                // backgroundColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
             }]
         },
 
@@ -59,14 +73,13 @@
 
         let pdf = new jsPDF();
         pdf.setFontSize(15);
-        pdf.text("Life Balance Wheel", 10, 20);
-        pdf.setFontSize(10);
-
-        pdf.text("Client's Name _________________", 140, 15);
-        pdf.text("Preperer's Name _______________", 140, 25);
+        pdf.text(templateName, 10, 20);
+        pdf.setFontSize(12);
+        pdf.text("Client's Name: "+clientName , 135, 20);
+        pdf.text("Preperer's Name: "+preperesName, 135, 30);
 
         pdf.setFontSize(25);
-        pdf.text("Life Balance Wheel", 65, 50);
+        pdf.text(formTitle, 70, 55);
         pdf.setFontSize(30);
         pdf.addImage(canvasImage, 'JPEG', 48, 70);
         pdf.setFontSize(8);
