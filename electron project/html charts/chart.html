@@ -1,9 +1,11 @@
 <html>
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <!-- <script src="./chart.js"></script> -->
+   
+    <!-- <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script> -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.3.js"></script> -->
 </head>
 
 <body>
@@ -17,6 +19,7 @@
     <button onclick="downloadcanvas2()">
         Download
     </button>
+    <script src="jspdf.umd.min.js"></script>
     <script>
 
         var mydata = null;
@@ -149,8 +152,8 @@
             imagelink.click();
         }
         function downloadcanvas2() {
-            var dataofPDF = this.mydata;
-            console.log(dataofPDF)
+            // var dataofPDF = this.mydata;
+            // console.log(dataofPDF)
             const today = new Date()
             const year = today.getFullYear()
             const month = today.getMonth()
