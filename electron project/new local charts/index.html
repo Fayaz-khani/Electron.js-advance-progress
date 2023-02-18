@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="jspdf.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script> -->
+    <!-- <link  href="./jspdf.debug.js"> -->
+    <!-- <link  href="./jspdf.min.js"> -->
+    <title>Document</title>
+<script>
+    // window.jsPDF = window.jspdf.jsPDF;
+    function downloadPage(){
+
+        console.log("called");
+
+        const today = new Date()
+        const year = today.getFullYear()
+        const month = today.getMonth()
+        const day = today.getDate()
+
+
+
+        let pdf = new jsPDF();
+
+        var elementHTML = document.querySelector("#content");
+        pdf.html(elementHTML,{
+            callback:function(doc){
+                doc.save('document.pdf');
+            },
+            margin:[10,10,10,10],
+            autoPaging: 'text',
+            x:0,
+            y:0,
+            width:190,
+            windowWidth:675
+        });
+        pdf.setFontSize(15);
+        pdf.text("How are you", 10, 20);
+        pdf.setFontSize(12);
+        // pdf.text("Client's Name: "+clientName , 125, 20);
+        // pdf.text("Preperer's Name: "+preperesName, 125, 30);
+
+        pdf.setFontSize(25);
+        // pdf.text(formTitle, 70, 55);
+        pdf.setFontSize(30);
+        // pdf.addImage(canvasImage, 'JPEG', 48, 70);
+        pdf.setFontSize(8);
+        pdf.text("All Meterials @ Reimagine Life, LLC 2022 TO  Life Rose @ Reimagine Life, LLC 2023", 45, 290);
+        pdf.setFontSize(12);
+        pdf.text("Prepared By _________________", 125, 260);
+        pdf.text("Date:  " + (day) + "/" + (month + 1) + "/" + year, 125, 270);
+        pdf.save('lifeBalanceWheel.pdf')
+
+    }
+</script>
+</head>
+<body>
+    <div class="" id="content">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et possimus earum sequi vitae consequatur praesentium corporis, nesciunt repudiandae dolore atque ut quia perspiciatis non numquam rem reprehenderit porro iure nihil ad quisquam ducimus incidunt, eaque impedit. Perspiciatis voluptates eveniet distinctio aperiam aspernatur ea atque? Dolorum esse blanditiis natus neque! Voluptate nulla quasi aliquid asperiores! Fugit, at vel consectetur cumque eaque qui dolores amet odit neque aperiam adipisci laboriosam quisquam doloribus dignissimos! Quasi nihil ipsa doloribus accusantium soluta, officiis, ad asperiores explicabo et, ducimus minus sit. Sed laborum quidem, minus atque mollitia facere labore officia incidunt qui! Sequi asperiores porro ipsum perferendis maxime quaerat officia ullam, totam assumenda ratione? Eos vero tempora laborum. Vero, modi a! Consequatur ipsam facere aliquid ratione.
+    </div>
+    <button onclick="downloadPage()">
+        download
+    </button>
+</body>
+</html>
