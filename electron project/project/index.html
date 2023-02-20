@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-  <script src="./assets/js/chart.js"></script>
-    <link rel="stylesheet" href="./assets/bootstrap/style.css">
+    <script src="./assets/js/chart.js"></script>
+    <script src="./assets/js/jspdf.min.js"></script>
+    <script src="./assets/js/jspdf.debug.js"></script>
+    <link rel="stylesheet" href="./assets/bootstrap/style.css" type="text/css">
     <title>Charts</title>
 </head>
 
@@ -125,12 +126,6 @@
             plugins: {
                 legend: {
                     display: false,
-                    
-                    labels: {
-          
-        //   fontColor: "#FFE",
-          color: "#123123",
-        }
                 },
             },
             scales: {
@@ -139,7 +134,7 @@
                         display: true,
                         centerPointLabels: true,
                         font: {
-                            size: 16,
+                            size: 17
                         }
                     },
                 }
@@ -159,8 +154,6 @@
         let pdf = new jsPDF();
         var canvas = document.getElementById("chartJSContainer");
         var canvasImage = canvas.toDataURL('image.png', 1.5);
-        var width = pdf.internal.pageSize.getWidth();
-        var height = pdf.internal.pageSize.getHeight();
         pdf.setFontSize(15);
         pdf.text(templateName, 10, 20);
         pdf.setFontSize(10);
@@ -169,7 +162,7 @@
         pdf.setFontSize(25);
         pdf.text(formTitle, 70, 55);
         pdf.setFontSize(25);
-        pdf.addImage(canvasImage, 'JPEG', 42, 70, 130, 130);
+        pdf.addImage(canvasImage, 'JPEG', 40, 70, 130, 130);
         pdf.setFontSize(8);
         pdf.text("All Meterials @ Reimagine Life, LLC 2022 TO  Life Rose @ Reimagine Life, LLC 2023", 45, 290);
         pdf.setFontSize(12);
