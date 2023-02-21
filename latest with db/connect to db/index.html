@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script>window.$ = window.jQuery = require('./jquery-2.1.4.js');</script>
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+
+    <script>
+        var mysql = require('mysql');
+
+        var connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'username',
+            password: password,
+            database: 'template'
+        });
+        connection.connect();
+        var sql = 'SELECT `templatename`,`id` FROM `template`';
+
+        console.log("mudassir")
+        connection.query($sql, function (error, results, fields) {
+            if (error) console.log(error.code);
+            else {
+                console.log(results);
+                $('#resultDiv').text(results[0].templatename); //emp_name is column name in your database
+            }
+        });
+        connection.end();
+
+    </script>
+</body>
+
+</html>
