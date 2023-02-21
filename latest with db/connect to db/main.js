@@ -3,49 +3,37 @@ const path = require('path')
 
 const { Menu } = require('electron')
 const { dialog } = require('electron')
+const { type } = require('os')
 // Define the template for the app menu
 const template = [
     {
         label: 'New Template',
         accelerator: 'CmdOrCtrl+T', // Shortcut key
         click: async () => {
-            // Code to create and show the dialog with input fields
-            const { response, checkboxChecked } = await dialog.showMessageBox({
-              type: 'question',
-              title: 'New Template',
-              message: 'Enter template details:',
-              checkboxLabel: 'Save as default template',
-              buttons: ['OK', 'Cancel'],
-              defaultId: 0,
-              cancelId: 1,
-              inputFields: [
-                {
-                  label: 'Template Name:',
-                  value: '',
-                  type: 'text'
-                },
-                {
-                  label: 'Template Type:',
-                  value: 'Default',
-                  type: 'select',
-                  options: ['Default', 'Custom']
-                }
-              ]
-            })
+          createBrowserWindow();
+          
+          
+          //   // Code to create and show the dialog with input fields
+          //   const { response, checkboxChecked } = await dialog.showOpenDialog({
+          //     // defaultPath:app.getPath("downloads")
+          //    properties:['message'],
+          // filters:[
+          //   {name:"your Template name"}]})
             
-            // Handle the user's response here
-            if (response === 0) {
-              const [nameField, typeField] = checkboxChecked ? inputFields.slice(0, 2) : inputFields
-              const templateName = nameField.value
-              const templateType = typeField.value
-              console.log(`Template Name: ${templateName}, Template Type: ${templateType}`)
-            }
+          //   // Handle the user's response here
+          //   if (response === 0) {
+          //     const [nameField, typeField] = checkboxChecked ? inputFields.slice(0, 2) : inputFields
+          //     const templateName = nameField.value
+          //     const templateType = typeField.value
+          //     console.log(`Template Name: ${templateName}, Template Type: ${templateType}`)
+          //   }
           }
         
       },{
         label: 'New Form',
         accelerator: 'CmdOrCtrl+F', // Shortcut key
         click: () => {
+          dialog.
             dialog.showMessageBoxSync({
                 type: 'info',
                 title: 'Create New Form',
@@ -65,8 +53,28 @@ const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
 
+// function createBrowserWindow(){
+//   const remote = require('electron').remote;
+//   const BrowserWindow = remote.BrowserWindow;
+//   const win = new BrowserWindow({
+//     height: 600,
+//     width: 800
+//   });
+//   win.loadURL('form.html');
+// }
 
+const createBrowserWindow = () => {
+  const win = new BrowserWindow({
+      width: 450,
+      height: 500,
+      webPreferences: {
+          preload: path.join(__dirname, 'preload.js'),
+      },
+      
+  });
 
+  win.loadFile('form.html');
+}
 
 function createWindow () {
   const win = new BrowserWindow({
