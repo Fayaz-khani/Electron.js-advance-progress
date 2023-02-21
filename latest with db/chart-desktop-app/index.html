@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Main Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+           
+        <div class="container">
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    New Template
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+    </div>
+    <script>
+        const profile = document.getElementById('profile');
+        var imgUrl = null;
+        profile.addEventListener('change', (event) => {
+            const filename = event.target.files[0].name;
+            console.log("filename")
+            console.log(filename)
+            const extension = filename.split('.').pop();
+
+            // document.write(extension);
+
+            var up = document.getElementById('GFG_UP');
+            up.innerHTML = "Click on the button to add image element";
+            var down = document.getElementById('GFG_DOWN');
+
+            function GFG_Fun() {
+                var img = document.createElement('p');
+                img.src = this.filename;
+                document.getElementById('body').appendChild(img);
+                down.innerHTML = filename;
+            }
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
