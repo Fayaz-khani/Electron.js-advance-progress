@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-6">
                 <label for="validationCustom03" class="form-label"> Label </label>
-                <input type="text" class="form-control  form-control-sm" id="validationCustom03" required>
+                <input type="text" class="form-control  form-control-sm" id="validationCustom04" required>
             </div>
 
 
@@ -63,13 +63,24 @@
             </div>
             <div class="col-md-12">
                 <button type="button" class="btn btn-outline-dark   mr-3">Cancel</button>
-                <button type="button" class="btn btn-success ">Submit</button>
-
+                <button type="button" class="btn btn-success " onclick="submitted()">Submit</button>
             </div>
 
         </form>
     </div>
 
+<script>
+
+        function submitted(){
+            // console.log("submitted")
+            var templateName = document.querySelector("#validationCustom01");
+            var formTitle = document.querySelector("#validationCustom02");
+            var logo = document.querySelector("#validationCustom03");
+            
+            console.log(logo.value)
+        }
+      
+    </script>
 
 </body>
 

@@ -23,13 +23,13 @@ const db = new sqlite3.Database('./template.db',sqlite3.OPEN_READWRITE,(err)=>{
     // get the last insert id
     console.log(`A row has been inserted with rowid ${this.lastID}`);
   });
-let array=[];
+// let array=[];
   // close the database connection
-  db.close();
-        connection.query($sql, function (error, results, fields) {
-            if (error) throw error;
-            document.write('The solution is: ', results[0].Name = array);
-            console.log(array)
-        });
+  // db.close();
+  //       connection.query($sql, function (error, results, fields) {
+  //           if (error) throw error;
+  //           document.write('The solution is: ', results[0].Name = array);
+  //           console.log(array)
+  //       });
 
-        connection.end();
+  //       connection.end();
