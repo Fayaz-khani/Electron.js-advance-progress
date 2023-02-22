@@ -1,0 +1,19 @@
+{
+  "ClientName": "Farooq Ahmad",
+  "PrepererName": "Mudassir Khattak",
+  "TemplateName": "My Template ",
+  "FormTitle": "My Title",
+  "LogoPath": "My Logo",
+  "Categories": [
+    {
+      "label": "label 1",
+      "value": 80,
+      "color": "blue"
+    },
+    {
+      "label": "lable 2",
+      "value": 100,
+      "color": "orange"
+    }
+  ]
+}

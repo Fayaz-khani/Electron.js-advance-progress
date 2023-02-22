@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="chartSize" class="center">
+        <canvas id="chartJSContainer" width="" height=""></canvas>
+        <button onclick="downloadcanvas2()" class="button button1">
+            Generate
+        </button>
+    </div>
+</body>
+<script>
+    const options = {
+        type: 'polarArea',
+        data: {
+            labels: ["khan", "fayaz", "Yellow", "Green", "Purple", "physical Health"],
+            datasets: [{
+                label: 'life Balance Wheel',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+            }]
+        },
+
+        options: {
+            scales: {
+                r: {
+                    pointLabels: {
+                        display: true,
+                        centerPointLabels: true,
+                        font: {
+                            size: 15
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    const ctx = document.getElementById('chartJSContainer').getContext('2d');
+    new Chart(ctx, options);
+
+    function downloadcanvas2() {
+        const today = new Date()
+        const year = today.getFullYear()
+        const month = today.getMonth()
+        const day = today.getDate()
+
+        var canvas = document.getElementById("chartJSContainer");
+        var canvasImage = canvas.toDataURL('image.png', 1.5);
+
+        let pdf = new jsPDF();
+        pdf.setFontSize(15);
+        pdf.text("Life Balance Wheel", 10, 20);
+        pdf.setFontSize(10);
+
+        pdf.text("Client's Name _________________", 140, 15);
+        pdf.text("Preperer's Name _______________", 140, 25);
+
+        pdf.setFontSize(25);
+        pdf.text("Life Balance Wheel", 65, 50);
+        pdf.setFontSize(30);
+        pdf.addImage(canvasImage, 'JPEG', 48, 70);
+        pdf.setFontSize(8);
+        pdf.text("All Meterials @ Reimagine Life, LLC 2022 TO  Life Rose @ Reimagine Life, LLC 2023", 45, 290);
+        pdf.setFontSize(12);
+        pdf.text("Prepared By _________________", 140, 260);
+        pdf.text("Date:  " + (day) + "/" + (month + 1) + "/" + year, 140, 270);
+        pdf.save('lifeBalanceWheel.pdf')
+
+    };
+</script>
+
+</html>
+<style>
+    #chartSize {
+        /* justify-content: center !important; */
+        text-align: center !important;
+        width: 450px;
+        /* margin-top: 100px; */
+        /* margin-left: 650px; */
+        vertical-align: middle;
+    }
+
+    .center {
+        margin: 0;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .button {
+        border-radius: 9px;
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        /* padding-top: 30px !important; */
+        margin-top: 54px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+    }
+
+    .button1:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>

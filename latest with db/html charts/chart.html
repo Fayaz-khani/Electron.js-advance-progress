@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+</head>
+
+<body>
+    <canvas id="myChart" width="400" height="400">
+        <div id="labels"></div>
+    </canvas>
+
+    <button onclick="downloadcanvas2()">
+        Download
+    </button>
+    <script>
+
+      
+      
+
+        var data = [
+
+            {
+                value: 20,
+                color: "blue",
+                highlight: "darkblue",
+                label: "Physical Health"
+            },
+            {
+                value: 20,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Mental Health"
+            },
+            {
+                value: 10,
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "Emotional Health"
+            },
+            {
+                value: 20,
+                color: "#949FB1",
+                highlight: "#A8B3C5",
+                label: "Social Health"
+            },
+            {
+                value: 22,
+                color: "#4D5360",
+                highlight: "#616774",
+                label: "spiritual Health"
+
+            },
+            {
+                value: 22,
+                color: "pink",
+                highlight: "pink",
+                label: "intellectual Health"
+            }
+        ];
+        datasets: [{
+            backgroundColor: [
+                "#2ecc71",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#34495e"
+            ]}]
+
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myNewChart = new Chart(ctx).PolarArea(data);
+            this.data.forEach(item => {
+                var i = 80;
+
+                console.log(i)
+
+                //here I want to increase the size of i (distance from the top)
+                // pdf.text(item.color, 15, i);
+                // pdf.text(item.label, 65, 100);
+                document.getElementById('labels').innerHTML = item.color;
+                // document.write(item.color +"<br>")
+                // document.write(item.label+"<br>")
+                // document.write(item.value+"<br>")
+                var paragraph = document.getElementById("p");
+                var text = document.createTextNode(item.color + item.label + item.value);
+
+                paragraph.appendChild(text);
+                // var paragraph = document.getElementById("p2");
+                // var text = document.createTextNode(item.label );
+
+                // paragraph.appendChild(text);
+                // var paragraph = document.getElementById("p3");
+                // var text = document.createTextNode(item.value );
+
+                // paragraph.appendChild(text);
+            });
+            function downloadcanvas() {
+            var imagelink = document.createElement('a');
+            var canvas = document.getElementById("myChart");
+            imagelink.download = 'Life  Baclance Wheel';
+            imagelink.href = canvas.toDataURL('image.png', 1);
+            imagelink.click();
+        }
+        function downloadcanvas2() {
+            var dataofPDF = this.mydata;
+            console.log(dataofPDF)
+            const today = new Date()
+            const year = today.getFullYear()
+            const month = today.getMonth()
+            const day = today.getDate()
+
+
+            var canvas = document.getElementById("myChart");
+            var canvasImage = canvas.toDataURL('image.png', 1.5);
+
+            let pdf = new jsPDF();
+            pdf.setFontSize(10);
+            pdf.text("Life Balance Wheel", 10, 15);
+            pdf.setFontSize(10);
+            // pdf.text(dataofPDF[0], 40, 25);
+            pdf.text("Client's Name _________________", 140, 15);
+            pdf.text("Preperer's Name _______________", 140, 25);
+
+           
+
+            data.forEach(item => {
+                var i = 80;
+
+                console.log(i)
+
+             
+                pdf.text(item.color, 15, i);
+                pdf.text(item.label, 65, 100);
+                i = + 15
+                console.log(i);
+            });
+            pdf.setFontSize(25);
+            pdf.text("Life Balance Wheel", 65, 50);
+            pdf.addImage(canvasImage, 'JPEG', 50, 65);
+            pdf.setFontSize(8);
+            pdf.text("All Meterials @ Reimagine Life, LLC 2022 TO  Life Rose @ Reimagine Life, LLC 2023", 40, 290);
+            pdf.setFontSize(12);
+            pdf.text("Prepared By _________________", 140, 260);
+            pdf.text("Date:  " + (day) + "/" + (month + 1) + "/" + year, 140, 270);
+            pdf.save('lifeBalanceWheel.pdf')
+
+        };
+
+
+    </script>
+</body>
+
+</html>
+<style>
+
+</style>
