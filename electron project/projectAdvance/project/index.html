@@ -14,6 +14,14 @@
 
 <body>
     <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="col-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row ">
             <div class="col text-right mt-2">
                 <a class="pt-4 " id="downloadLink" onclick="pageDownload()">
@@ -23,33 +31,31 @@
         </div>
     </div>
     <div class="p-5" id="pageContent">
-        <div class="container">
-            <div class="row mt-2 text-center">
+        <div class="container text-center pt-0 p-2">
+            <div class="row mt-2">
                 <div class="col-6">
-                    <h5 id="tempName">
-                        Life Balance Wheel
-                    </h5>
+
+                    <img src="./assets/images/logo.png" width="100px" alt="">
 
                 </div>
-                <div class="col-6">
+                <div class="col-6 mt-4 text-lift">
+                    <h3 id="tempName">
+                            Life Balance Wheel
+                    </h3>
                     <div class="">
                         Client's Name: <span id="clintName"></span>
                     </div>
-                    <div class="">
-                        Preperer's Name: <span id="preparerName"></span>
-                    </div>
-
+                    
                 </div>
             </div>
         </div>
 
-        <div class="container mt-5">
+        <div class="container" >
             <div class="row text-center">
                 <div class="col-12 ">
-                    <h5 id="formName">
+                    <h2 id="formName">
                         Life Balance Wheel
-                    </h5>
-
+                    </h2>
                 </div>
             </div>
             <div class="row text-center">
@@ -66,7 +72,9 @@
                 <div class="col-8"></div>
                 <div class="col-4">
                     <div class="footer">
-                        Prepare By _________________
+                        Prepare By :
+                         <span id="preparerName"></span>
+                    
                     </div>
                     <div class="">
                         Date: <span id="PageDate"></span>
@@ -76,11 +84,10 @@
         </div>
 
         <div class="container mt-5">
-            <div class="row text-center">
-                <div class="col-12 ">
-                    <p class="companyInfo">
-                        All Meterials @ Reimagine Life, LLC 2022 TO Life Rose @ Reimagine Life, LLC 2023
-
+            <div class="row ">
+                <div class="col-12 text-start ">
+                    <p class="companyInfo ">
+                        All Meterials © Reimagine Life, LLC 2022 
                     </p>
 
                 </div>
@@ -108,11 +115,11 @@
     const month = today.getMonth()
     const day = today.getDate()
 
-    document.getElementById("tempName").innerHTML = templateName;
+    // document.getElementById("tempName").innerHTML = templateName;
     document.getElementById("clintName").innerHTML = clientName;
     document.getElementById("preparerName").innerHTML = preperesName;
     document.getElementById("formName").innerHTML = formTitle;
-    document.getElementById("PageDate").innerHTML = "Date:  " + (day) + "/" + (month + 1) + "/" + year;
+    document.getElementById("PageDate").innerHTML =  (month + 1) + "/" + (day)  + "/" + year;
 
     const options = {
         type: 'polarArea',
@@ -231,6 +238,7 @@
 
     .companyInfo {
         font-size: 12px;
+        margin-left: 230px;
     }
 
     #chartSize {
@@ -253,5 +261,8 @@
         color: rgb(7, 7, 97);
         border-bottom: 1px solid rgb(7, 7, 97);
         transition: all ease-in-out;
+    }
+    #formName{
+        padding-top: 50px;
     }
 </style>
