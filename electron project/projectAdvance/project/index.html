@@ -8,9 +8,6 @@
     <script src="./assets/jspdf.min.js_1.5.3/cdnjs/jspdf.min.js"></script>
     <script src="./assets/jspdf.min.js_1.5.3/unpkg/jspdf.min.js"></script>
     <script src="./assets/jspdf.min.js_1.5.3/chart/chart.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script> -->
     <link rel="stylesheet" href="./assets/bootstrap/style.css" type="text/css">
     <title>Charts</title>
 </head>
@@ -43,17 +40,17 @@
                 </div>
                 <div class="col-6 mt-4 text-lift">
                     <h3 id="tempName">
-                            Life Balance Wheel
+                        Life Balance Wheel
                     </h3>
                     <div class="">
                         Client's Name: <span id="clintName"></span>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
 
-        <div class="container" >
+        <div class="container">
             <div class="row text-center">
                 <div class="col-12 ">
                     <h2 id="formName">
@@ -77,8 +74,8 @@
                 <div class="col-4">
                     <div class="footer">
                         Prepare By :
-                         <span id="preparerName"></span>
-                    
+                        <span id="preparerName"></span>
+
                     </div>
                     <div class="">
                         Date: <span id="PageDate"></span>
@@ -91,7 +88,7 @@
             <div class="row ">
                 <div class="col-12 text-start ">
                     <p class="companyInfo ">
-                        All Meterials © Reimagine Life, LLC 2022 
+                        All Meterials © Reimagine Life, LLC 2022
                     </p>
 
                 </div>
@@ -105,7 +102,6 @@
 </body>
 <script>
 
-    //   var imgData = './assets/images';
 
     const templateName = "life Balance Wheel";
     const clientName = "Saeed Sharif khan";
@@ -119,42 +115,31 @@
     const month = today.getMonth()
     const day = today.getDate()
 
-    // document.getElementById("tempName").innerHTML = templateName;
+    document.getElementById("tempName").innerHTML = templateName;
     document.getElementById("clintName").innerHTML = clientName;
     document.getElementById("preparerName").innerHTML = preperesName;
     document.getElementById("formName").innerHTML = formTitle;
-    document.getElementById("PageDate").innerHTML =  (month + 1) + "/" + (day)  + "/" + year;
+    document.getElementById("PageDate").innerHTML = (month + 1) + "/" + (day) + "/" + year;
 
     const options = {
         type: 'polarArea',
         scale: {
-        ticks: {
-            stepSize: 2,
-        },
-    //     title : {
-    //   "display": false,
-    //   "position": "top",
-    //   "fontSize": 12,
-    //   "fontFamily": "sans-serif",
-    //   "fontColor": "#666666",
-    //   "fontStyle": "bold",
-    //   "padding": 10,
-    //   "lineHeight": 1.2,
-    //   "text": "Polar area chart"
-    // },
-    },
-    
-        y: {
-             
-                min: 0,
-                max: 10,
-                
+            ticks: {
+                stepSize: 2,
             },
+        },
+
+        y: {
+
+            min: 0,
+            max: 10,
+
+        },
         data: {
-            
+
             labels: ["Physical Health", "mental Health", "social Health", "inteligent Health", "spiritual", "emotional"],
             datasets: [{
-                data: [1, 6, 17, 13, 14,12],
+                data: [1, 6, 17, 13, 14, 12],
                 backgroundColor: ['#654123', '#123654', '#E8598B', '#113007', '#111207', '#101127']
             }]
         },
@@ -166,12 +151,12 @@
                 },
             },
             scale: {
-      ticks: {
-        min: 0,
-        max: 10,
-      },
-    },
-  
+                ticks: {
+                    min: 0,
+                    max: 10,
+                },
+            },
+
             scales: {
                 r: {
                     pointLabels: {
@@ -202,19 +187,14 @@
         var canvas = document.getElementById("chartJSContainer");
         var canvasImage = canvas.toDataURL('image.png', 1.5);
         pdf.setFontSize(15);
-        // var imgData.src = './assets/images/logo.png';
         var img = new Image;
         img.src = './assets/images/logo.png';
         img.crossOrigin = "";
         pdf.addImage(img, 'PNG', 20, 10, 20, 20);
-        //files--
-        //--allow-file-access-from-files
         pdf.setFontSize(15);
         pdf.text(templateName, 125, 20);
         pdf.setFontSize(10);
         pdf.text("Client's Name: " + clientName, 125, 27);
-        // pdf.text("Preperer's Name: " + preperesName, 125, 30);
-        // var width = pdf.internal.pageSize.getWidth();
         pdf.setFont('bold').setTextColor(0, 0, 0).setFontSize(25).text("" + formTitle, width / 2, 55, { align: "center" });
         pdf.setFontSize(25);
         pdf.addImage(canvasImage, 'JPEG', (width - 130) / 2, 55, 130, 130);
@@ -241,7 +221,7 @@
     .button {
         border-radius: 9px;
         background-color: #4CAF50;
-        /* Green */
+
         border: none;
         color: white;
         padding: 16px 32px;
@@ -249,7 +229,6 @@
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        /* padding-top: 30px !important; */
         margin-top: 54px;
         transition-duration: 0.4s;
         cursor: pointer;
@@ -297,7 +276,8 @@
         border-bottom: 1px solid rgb(7, 7, 97);
         transition: all ease-in-out;
     }
-    #formName{
+
+    #formName {
         padding-top: 50px;
     }
 </style>
