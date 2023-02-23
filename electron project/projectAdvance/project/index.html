@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="./assets/jspdf.min.js_1.5.3/cdnjs/jspdf.min.js"></script>
+    <script src="./assets/jspdf.min.js_1.5.3/cdnjs/jspdf.min.js"></script>
     <script src="./assets/jspdf.min.js_1.5.3/unpkg/jspdf.min.js"></script>
-    <script src="./assets/jspdf.min.js_1.5.3/chart/chart.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="./assets/jspdf.min.js_1.5.3/chart/chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script> -->
     <link rel="stylesheet" href="./assets/bootstrap/style.css" type="text/css">
     <title>Charts</title>
 </head>
@@ -63,12 +63,10 @@
             </div>
             <div class="row text-center">
                 <div class="col-12">
-                    <!-- <div id="chartSize" class="">
-                        <canvas id="chartJSContainer" width="" height=""></canvas>
-                    </div> -->
-                    <div id="myChart" class="">
+                    <div id="chartSize" class="">
                         <canvas id="chartJSContainer" width="" height=""></canvas>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -126,94 +124,70 @@
     document.getElementById("preparerName").innerHTML = preperesName;
     document.getElementById("formName").innerHTML = formTitle;
     document.getElementById("PageDate").innerHTML =  (month + 1) + "/" + (day)  + "/" + year;
-    var data = [
 
-{
-    value: 20,
-    color: "blue",
-    highlight: "darkblue",
-    label: "Physical Health"
-},
-{
-    value: 20,
-    color: "#46BFBD",
-    highlight: "#5AD3D1",
-    label: "Mental Health"
-},
-{
-    value: 10,
-    color: "#FDB45C",
-    highlight: "#FFC870",
-    label: "Emotional Health"
-},
-{
-    value: 20,
-    color: "#949FB1",
-    highlight: "#A8B3C5",
-    label: "Social Health"
-},
-{
-    value: 22,
-    color: "#4D5360",
-    highlight: "#616774",
-    label: "spiritual Health"
-
-},
-{
-    value: 22,
-    color: "pink",
-    highlight: "pink",
-    label: "intellectual Health"
-}
-];
-datasets: [{
-backgroundColor: [
-    "#2ecc71",
-    "#3498db",
-    "#95a5a6",
-    "#9b59b6",
-    "#f1c40f",
-    "#e74c3c",
-    "#34495e"
-]}]
-
-var ctx = document.getElementById("myChart").getContext("2d");
-var myNewChart = new Chart(ctx).PolarArea(data);
+    const options = {
+        type: 'polarArea',
+        scale: {
+        ticks: {
+            stepSize: 2,
+        },
+    //     title : {
+    //   "display": false,
+    //   "position": "top",
+    //   "fontSize": 12,
+    //   "fontFamily": "sans-serif",
+    //   "fontColor": "#666666",
+    //   "fontStyle": "bold",
+    //   "padding": 10,
+    //   "lineHeight": 1.2,
+    //   "text": "Polar area chart"
+    // },
+    },
     
-    // const options = {
-    //     type: 'polarArea',
-        
-    //     data: {
+        y: {
+             
+                min: 0,
+                max: 10,
+                
+            },
+        data: {
             
-    //         labels: ["Physical Health", "mental Health", "social Health", "inteligent Health", "spiritual", "emotional"],
-    //         datasets: [{
-    //             data: [11, 16, 7, 3, 14,12],
-    //             backgroundColor: ['#654123', '#123654', '#E8598B', '#113007', '#111207', '#101127']
-    //         }]
-    //     },
+            labels: ["Physical Health", "mental Health", "social Health", "inteligent Health", "spiritual", "emotional"],
+            datasets: [{
+                data: [1, 6, 17, 13, 14,12],
+                backgroundColor: ['#654123', '#123654', '#E8598B', '#113007', '#111207', '#101127']
+            }]
+        },
 
-    //     options: {
-    //         plugins: {
-    //             legend: {
-    //                 display: false,
-    //             },
-    //         },
-    //         scales: {
-    //             r: {
-    //                 pointLabels: {
-    //                     display: true,
-    //                     centerPointLabels: true,
-    //                     font: {
-    //                         size: 17
-    //                     }
-    //                 },
-    //             }
-    //         }
-    //     }
-    // }
+        options: {
+            plugins: {
+                legend: {
+                    display: false,
+                },
+            },
+            scale: {
+      ticks: {
+        min: 0,
+        max: 10,
+      },
+    },
+  
+            scales: {
+                r: {
+                    pointLabels: {
+                        display: true,
+                        centerPointLabels: true,
+                        font: {
+                            size: 17
+                        }
+                    },
+                }
+            }
+        }
+    }
 
-    // const ctx = document.getElementById('chartJSContainer').getContext('2d');
-    // new Chart(ctx, options);
+    const ctx = document.getElementById('chartJSContainer').getContext('2d');
+    new Chart(ctx, options);
 
     function pageDownload() {
         const today = new Date()

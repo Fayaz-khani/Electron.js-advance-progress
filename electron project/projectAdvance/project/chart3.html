@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+<head>
+   <meta charset- "UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>chart.js</title>
+</head>
+<body>
+   <canvas id="chartId" aria-label="chart" height="350" width="580"></canvas>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+   <script>
+      var chrt = document.getElementById("chartId").getContext("2d");
+      var chartId = new Chart(chrt, {
+         type: 'polarArea',
+         data: {
+            labels: ["HTML", "CSS", "JAVASCRIPT", "CHART.JS", "JQUERY", "BOOTSTRP"],
+            datasets: [{
+               label: "online tutorial subjects",
+               data: [20, 40, 15, 35, 25, 38],
+               backgroundColor: ['yellow', 'aqua', 'pink', 'lightgreen', 'gold', 'lightblue'],
+            }],
+         },
+         options: {
+            responsive: false,
+         },
+         "title": {
+      "display": true,
+      "position": "bottom",
+      "fontSize": 120,
+      "fontFamily": "sans-serif",
+      "fontColor": "#666666",
+      "fontStyle": "bold",
+      "padding": 10,
+      "lineHeight": 1.2,
+      "text": "Chart title"
+    },
+      });
+   </script>
+</body>
+</html>
